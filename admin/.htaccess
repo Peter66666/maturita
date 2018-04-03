@@ -1,0 +1,12 @@
+
+
+
+
+RewriteEngine On
+RewriteRule  ^editfilm/(.*) editfilm.php?&id_filmu=$1 [L,QSA]
+RewriteRule  ^edituser/new edituser.php [L,QSA]
+RewriteRule  ^edituser/(.*) edituser.php?&id_zak=$1 [L,QSA]
+RewriteRule  ^editschedule/(.*) editschedule.php?&id_promitani=$1 [L,QSA]
+
+
+

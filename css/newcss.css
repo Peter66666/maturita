@@ -1,0 +1,119 @@
+body{
+    font-family: Verdana;
+    background-color: #cccccc;
+}
+#cover{
+    position: relative;
+    width: 100%;
+    height: 800px;
+    border:1px solid black;
+    border-radius: 10px;
+    background-color: black;
+}
+#header{
+    position: relative;
+    width: 1216px;
+    height: 120px;
+    margin:1% 0% 0% 10%;
+    background-color: #6633ff;
+    border: 2px solid #666666;
+}
+#left{
+    position: relative;
+    width: 150px;
+    height: 500px;
+    background-color: #6633ff;
+    margin:1% 0% 0% 10%;
+    float: left;
+    border: 2px solid #666666;
+}
+#right{
+    position: relative;
+    width: 1020px;
+    height: 500px;
+    background-color: #6633ff;
+    margin:1% 0% 0% 21%;
+    float: none;
+    border: 2px solid #666666;
+    padding-left: 2%;
+}
+#footer{    
+    position: relative;
+    width: 1218px;
+    height: 100px;
+    background-color: grey;
+    margin:1% 0% 0% 9.9%;
+    border: 2px solid black;
+    text-align: center; 
+} 
+#address{
+    position: absolute;
+    width: 200px;
+    height: 90px;
+    margin: 5px 5px 5px 5px;
+    background-color: #666666;
+}
+#address h3 {
+    position: absolute;
+    top: -15px;
+    left: 10px;
+}
+#address p {
+    position: absolute;
+    top: 15px;
+    left: 50px;
+    font-size: 14px;
+}
+#contact{
+    position: absolute;
+    width: 200px;
+    height: 90px;
+    margin: 5px;
+    left: 201px;
+    background-color: #666666;     
+}
+#contact h3{
+    position: absolute;
+    top: -15px;
+    left: 20px;
+}
+#contact p {
+    position: absolute;
+    top: 20px;
+    left: 10px;
+    font-size: 14px;
+}
+ul{
+    padding-left: 15%;
+    width: 110px;
+}
+ul li{
+    list-style-type: none;
+    padding-right: 100%;
+    padding-top:20%;
+
+}
+ul li a{
+    text-decoration: none;
+    color: black;
+    font-size: 17px;
+    font-weight: bold;
+    padding-left: 5px;
+}
+ul li a:hover{
+    text-decoration: underline;
+}
+#login{
+    position: relative;
+    display: block;
+    margin-left: 1%;
+    margin-top: 2%;
+    font-weight: bold;  
+}
+#register{
+    position: relative;
+    display: block;
+    margin-left: 1%;
+    margin-top: 2%;
+    font-weight: bold;  
+}
