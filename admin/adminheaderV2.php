@@ -1,4 +1,4 @@
-<?php require_once 'C:\xampp\htdocs\maturita\autoloader.php'; ?>
+<?php require_once 'C:\xampp\htdocs\maturitni_prace\autoloader.php'; ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -21,7 +21,7 @@
                     <li><a href="../program.php">Program</a></li>
                     <li><a href="../informace.php">Informace</a></li>
                     <li><a href="../pronajem.php">Pronájem</a></li>
-                    <li><a href="index.php">Admin page</a></li>
+                    <li><a href="../index.php">Admin page</a></li>
                 </ul>
             </div>
             <div id="right">

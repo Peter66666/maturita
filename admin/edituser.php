@@ -1,13 +1,13 @@
 <?php
-require_once 'adminheader.php';
-require_once 'C:\xampp\htdocs\maturita\autoloader.php';
+require_once 'adminheaderV2.php';
+
 
 $id_user = filter_input(INPUT_GET, "id_zak");
 $row = Model::extractOneUser($id_user);
 $result = Model::extractRoles();
 ?><hr>
 
-<form method="post" action="edituser.php?&id_zak=<?php echo $row["id_zak"] ?>">
+<form method="post">
     Nové jméno:<input type="text" name="changename" value="<?php echo $row["jmeno"]?>"/><br/>
     Nové příjmení:<input type="text" name="changesurname" value="<?php echo $row["prijmeni"]?>"/><br/>
     Nový e-mail:<input type="text" name="changemail" value="<?php echo $row["email"] ?>"/><br/>
@@ -34,7 +34,7 @@ $newBirth = filter_input(INPUT_POST, "changebirth");
 if (isset($update) && isset($id_user)) {
     $result = Model::updateUser($id_user, $newName, $newSurname, $newMail, $newPasswd, $newRole, $newBirth);
 }elseif (isset($update)){
-    
+
     $result = Model::addUser($newName, $newSurname, $newMail, $newPasswd, $newRole, $newBirth);
 }
 require_once 'adminfooter.php';
