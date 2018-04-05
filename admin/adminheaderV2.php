@@ -15,12 +15,12 @@
             </div>
             <div id="left">
                 <ul>
-                    <li><a href="../uvod.php">Úvod</a></li>
-                    <li><a href="../prihlaseni.php">Přihlásit</a></li>
-                    <li><a href="../registrace.php">Registrace</a></li>
-                    <li><a href="../program.php">Program</a></li>
-                    <li><a href="../informace.php">Informace</a></li>
-                    <li><a href="../pronajem.php">Pronájem</a></li>
+                    <li><a href="../../uvod.php">Úvod</a></li>
+                    <li><a href="../../prihlaseni.php">Přihlásit</a></li>
+                    <li><a href="../../registrace.php">Registrace</a></li>
+                    <li><a href="../../program.php">Program</a></li>
+                    <li><a href="../../informace.php">Informace</a></li>
+                    <li><a href="../../pronajem.php">Pronájem</a></li>
                     <li><a href="../index.php">Admin page</a></li>
                 </ul>
             </div>

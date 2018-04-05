@@ -69,9 +69,9 @@ public static function addUser($newName, $newSurname, $newMail, $newPasswd, $new
     }
 }
 
-public static function addSchedule($language, $screeningtime, $price, $advancebooking, $hall){
+public static function addSchedule($film, $screeningtype, $language, $screeningtime, $price, $advancebooking, $hall){
   if(($language != "") && ($screeningtime != "") && ($price != "") && ($advancebooking != "") && ($hall != "")){
-    $query = "INSERT INTO `program` (`jazyk`, `cas_promitani`, `cena`, `konec_predprodeje`) VALUES ('$language', '$screeningtime', '$price', '$advancebooking');";
+    $query = "INSERT INTO `program` (`id_filmu`, `id_typ_promitani`, `jazyk`, `cas_promitani`, `cena`, `konec_predprodeje`,  `id_salu`) VALUES ('$film', '$screeningtype', '$language', '$screeningtime', '$price', '$advancebooking', '$hall');";
     echo $query;
     MySQLDb::queryString($query);
     echo "Přidali jste nové promítání";
@@ -145,6 +145,17 @@ public static function addSchedule($language, $screeningtime, $price, $advancebo
 
     }
 
+    public static function extractScreeningType(){
+      $query = "SELECT * FROM `typy_promitani` t
+                JOIN  `program` p ON p.id_typ_promitani = t.id_typ_promitani;";
+      $result = MySQLDb::queryString($query);
+      $typeInfo = array();
+      while ($row = mysqli_fetch_assoc($result)){
+        $typeInfo[] = $row;
+      }
+      return $typeInfo;
+    }
+
     public static function extractFilms() {
         $query = "SELECT * FROM `filmy`";
         $result = MySQLDB::queryString($query);
@@ -167,7 +178,7 @@ public static function addSchedule($language, $screeningtime, $price, $advancebo
     }
 
     public static function extractHalls(){
-      $query = "SELECT `nazev_salu` FROM `saly`";
+      $query = "SELECT `id_salu`, `nazev_salu` FROM `saly`";
       $result = MySQLDb::queryString($query);
       $hallInfo = array();
       while ($row = mysqli_fetch_assoc($result)){
@@ -210,16 +221,17 @@ public static function addSchedule($language, $screeningtime, $price, $advancebo
         }
     }
 
-    public static function updateSchedule($id_promitani, $language, $screeningtime, $price, $advancebooking, $hall){
-      if(($language != "") && ($screeningtime != "") && ($price != "") && ($advancebooking != "") && ($hall != "")){
-        $query = "UPDATE `program` SET `jazyk` = '$language', `cas_promitani` = '$screeningtime', `cena` = '$price', `konec_predprodeje` = '$advancebooking' WHERE `id_promitani` = '$id_promitani';";
+    public static function updateSchedule($id_promitani, $film, $screeningtype, $language, $screeningtime, $price, $advancebooking, $hall){
+        if(($language != "") && ($screeningtime != "") && ($price != "") && ($advancebooking != "") && ($hall != "")){
+        $query = "UPDATE `program` SET `id_filmu` ='$film', `id_typ_promitani` ='$screeningtype', `jazyk` = '$language', `cas_promitani` = '$screeningtime', `cena` = '$price', `konec_predprodeje` = '$advancebooking', `id_salu` = '$hall' WHERE `id_promitani` = '$id_promitani';";
         MySQLDb::queryString($query);
+        var_dump($query);
         echo "Aktualizace promítání úspěšně proběhla.";
-      } else {
+  } else {
         echo "Někde nastala chyba";
       }
 
-    }
+  }
 
     public static function updateFilm($id_filmu, $nazev_filmu){
       if (isset($id_filmu)){

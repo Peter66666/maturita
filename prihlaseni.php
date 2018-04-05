@@ -6,7 +6,9 @@ $password = filter_input(INPUT_POST, "password");
 
 if (isset($submit)) {
     $result = Model::logIn($email, $password);
+    var_dump($result);
     if (isset($result)) {
+        session_start();
         $_SESSION["email"] = $email;
     }
 }
@@ -41,5 +43,3 @@ include_once 'header.php';
             <?php
         }
         include_once 'footer.php';
-
-        

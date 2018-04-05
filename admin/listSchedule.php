@@ -21,7 +21,7 @@ foreach ($result as $row) {
 </table>
 <br/>
 <br/>
-<a href="editschedule/new">Přidat</a><br/>
+<a href="editschedule.php">Přidat</a><br/>
 <a href="index.php">Zpět</a>
 <hr>
 <?php

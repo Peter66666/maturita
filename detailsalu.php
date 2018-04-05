@@ -30,15 +30,15 @@ $rada = 0;
             $rada = $row["rada"];
             ?> <td style="background-color: <?php echo $color ?>;">
 
-                <?php if ($row["id_status"] == 1) { ?>
-                    <a href="objednavka-promitani=<?php echo $row["id_promitani"] ?>&sedacka=<?php echo $row["id_sedacky"] ?>"> 
+                <?php if (isset($_SESSION["email"]) && $row["id_status"] == 1) { ?>
+                    <a href="rezervovatsedacku.php?id_promitani=<?php echo $row["id_promitani"] ?>&id_sedacky=<?php echo $row["id_sedacky"] ?>">
                         <?php
                         echo $row["cislo_v_rade"] . "/" . $row["rada"] . " " . $row["nazev"];
                         ?></a></td><?php
             } else {
                 (isset($_SESSION["email"]) && $row["id_status"] == 3);
                 ?>
-            <a href="detailsalu-promitani=<?php echo $row["id_promitani"] ?>&sedacka=<?php echo $row["id_sedacky"] ?>">  <?php
+            <a href="koupitsedacku?id_promitani=<?php echo $row["id_promitani"] ?>&id_sedacky=<?php echo $row["id_sedacky"] ?>">  <?php
                 echo $row["cislo_v_rade"] . "/" . $row["rada"] . " " . "Zrušit";
             }
             ?>

@@ -15,7 +15,7 @@ include_once 'header.php';
             <td><?php echo $row["cena"] ?></td>
             <td><?php echo $row["nazev_salu"] ?></td>
             <td><?php echo $row["nazev"] ?></td>
-            <td><?php echo $row["pocet_mist"] ?></td>
+          
             <td>
                 <?php if ($now <= $datumPredprodeje && isset($_SESSION["email"])) { ?>
                     <a href="detailpromitani.php?&id_promitani=<?php echo $row["id_promitani"] ?>">Objednat</a>
