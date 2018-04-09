@@ -13,6 +13,7 @@ foreach ($promitani as $row) {
         <tr><td>Cena</td><td><?php echo $row["cena"] ?></td></tr>
     <?php } ?>
 </table>
-<a href="detailsalu.php">Rezervovat sedačky</a>
+<a href="detailsalu.php?id_promitani=<?php echo $row["id_promitani"]; ?>">Rezervovat sedačky</a><br/>
+<a href="detailsalu.php?id_promitani=<?php echo $row["id_promitani"]; ?>">Koupit sedačku</a><br/>
 <?php
 include_once 'footer.php';

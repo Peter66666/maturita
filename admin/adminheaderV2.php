@@ -6,7 +6,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title></title>
-        <link rel="STYLESHEET" type="text/css" href="newcss.css" media="screen" />
+        <link rel="STYLESHEET" type="text/css" href="http://localhost/maturitni_prace/admin/style.css" media="screen" />
     </head>
     <body>
         <div id="cover">
@@ -15,13 +15,13 @@
             </div>
             <div id="left">
                 <ul>
-                    <li><a href="../../uvod.php">Úvod</a></li>
-                    <li><a href="../../prihlaseni.php">Přihlásit</a></li>
-                    <li><a href="../../registrace.php">Registrace</a></li>
-                    <li><a href="../../program.php">Program</a></li>
-                    <li><a href="../../informace.php">Informace</a></li>
-                    <li><a href="../../pronajem.php">Pronájem</a></li>
-                    <li><a href="../index.php">Admin page</a></li>
+                    <li><a href="http://localhost/maturitni_prace/uvod.php">Úvod</a></li>
+                    <li><a href="http://localhost/maturitni_prace/prihlaseni.php">Přihlásit</a></li>
+                    <li><a href="http://localhost/maturitni_prace/registrace.php">Registrace</a></li>
+                    <li><a href="http://localhost/maturitni_prace/program.php">Program</a></li>
+                    <li><a href="http://localhost/maturitni_prace/informace.php">Informace</a></li>
+                    <li><a href="http://localhost/maturitni_prace/pronajem.php">Pronájem</a></li>
+                    <li><a href="http://localhost/maturitni_prace/admin/index.php">Admin page</a></li>
                 </ul>
             </div>
             <div id="right">

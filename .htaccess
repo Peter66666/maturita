@@ -5,7 +5,3 @@
 RewriteEngine On
 RewriteRule  ^editfilm/(.*) editfilm.php?&id_filmu=$1 [L,QSA]
 RewriteRule  ^edituser/(.*) edituser.php?&id_zak=$1 [L,QSA]
-RewriteRule  ^objednavka/promitani=(.*)&sedacka=(.*) objednavka.php?&id_promitani=$1&id_sedacky=$1 [L,QSA]
-
-
-

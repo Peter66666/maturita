@@ -38,7 +38,7 @@ $rada = 0;
             } else {
                 (isset($_SESSION["email"]) && $row["id_status"] == 3);
                 ?>
-            <a href="koupitsedacku?id_promitani=<?php echo $row["id_promitani"] ?>&id_sedacky=<?php echo $row["id_sedacky"] ?>">  <?php
+            <a href="koupitsedacku.php?id_promitani=<?php echo $row["id_promitani"] ?>&id_sedacky=<?php echo $row["id_sedacky"] ?>">  <?php
                 echo $row["cislo_v_rade"] . "/" . $row["rada"] . " " . "Zrušit";
             }
             ?>

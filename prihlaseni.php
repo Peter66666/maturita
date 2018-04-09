@@ -1,4 +1,5 @@
 <?php
+error_reporting(0);
 require_once 'autoloader.php';
 $submit = filter_input(INPUT_POST, "submit");
 $email = filter_input(INPUT_POST, "email");
@@ -6,7 +7,7 @@ $password = filter_input(INPUT_POST, "password");
 
 if (isset($submit)) {
     $result = Model::logIn($email, $password);
-    var_dump($result);
+
     if (isset($result)) {
         session_start();
         $_SESSION["email"] = $email;
