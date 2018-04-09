@@ -7,7 +7,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title></title>
-        <link rel="STYLESHEET" type="text/css" href="style.css" media="screen" />
+        <link rel="STYLESHEET" type="text/css" href="http://localhost/maturitni_prace/css/style.css" media="screen" />
     </head>
     <body>
         <div id="cover">

@@ -37,15 +37,15 @@ body{
     border: 2px solid #666666;
     padding-left: 2%;
 }
-#footer{    
+#footer{
     position: relative;
     width: 1218px;
     height: 100px;
     background-color: grey;
     margin:1% 0% 0% 9.9%;
     border: 2px solid black;
-    text-align: center; 
-} 
+    text-align: center;
+}
 #address{
     position: absolute;
     width: 200px;
@@ -70,7 +70,7 @@ body{
     height: 90px;
     margin: 5px;
     left: 201px;
-    background-color: #666666;     
+    background-color: #666666;
 }
 #contact h3{
     position: absolute;
@@ -108,12 +108,12 @@ ul li a:hover{
     display: block;
     margin-left: 1%;
     margin-top: 2%;
-    font-weight: bold;  
+    font-weight: bold;
 }
 #register{
     position: relative;
     display: block;
     margin-left: 1%;
     margin-top: 2%;
-    font-weight: bold;  
+    font-weight: bold;
 }

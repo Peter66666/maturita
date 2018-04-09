@@ -61,7 +61,6 @@ class Model {
 public static function addUser($newName, $newSurname, $newMail, $newPasswd, $newRole, $newBirth){
     if(($newName != "") && ($newSurname != "") && ($newMail != "") && ($newPasswd != "") && ($newBirth != "")){
         $query = "INSERT INTO `zakaznici` (`role`, `id_obj`, `jmeno`, `prijmeni`, `datum_narozeni`, `email`, `heslo`) VALUES ('$newRole', '', '$newName', '$newSurname', '$newBirth', '$newMail', '$newPasswd');";
-        echo $query;
         MySQLDB::queryString($query);
         echo "Přidali jste nového uživatele";
     } else {
@@ -72,7 +71,6 @@ public static function addUser($newName, $newSurname, $newMail, $newPasswd, $new
 public static function addSchedule($film, $screeningtype, $language, $screeningtime, $price, $advancebooking, $hall){
   if(($language != "") && ($screeningtime != "") && ($price != "") && ($advancebooking != "") && ($hall != "")){
     $query = "INSERT INTO `program` (`id_filmu`, `id_typ_promitani`, `jazyk`, `cas_promitani`, `cena`, `konec_predprodeje`,  `id_salu`) VALUES ('$film', '$screeningtype', '$language', '$screeningtime', '$price', '$advancebooking', '$hall');";
-    echo $query;
     MySQLDb::queryString($query);
     echo "Přidali jste nové promítání";
   } else {
