@@ -10,8 +10,8 @@ $result3 = Model::extractScreeningType();
 
 <form method="post">
 Název filmu:<select name="film">
-    <?php foreach ($result2 as $row) { ?>
-        <option value="<?php echo $row["id_filmu"] ?>"><?php echo $row["nazev_filmu"];
+    <?php foreach ($result2 as $row2) { ?>
+        <option value="<?php echo $row2["id_filmu"] ?>"><?php echo $row2["nazev_filmu"];
 } ?></option>
 </select><br/>
 Jazyk:<input type="text" name="changelang" value="<?php echo $row1["jazyk"]?>"/><br/>
@@ -19,8 +19,8 @@ Jazyk:<input type="text" name="changelang" value="<?php echo $row1["jazyk"]?>"/>
 Cena:<input type="text" name="changeprice" value="<?php echo $row1["cena"]?>"/><br/>
 Konec předprodeje:<input type="date" name="changeadvancebooking" value="<?php echo $row["konec_predprodeje"]?>"/><br/>
 Typ promítání:<select name="promitani">
-    <?php foreach ($result3 as $row) { ?>
-        <option value="<?php echo $row["id_typ_promitani"] ?>"><?php echo $row["nazev"];
+    <?php foreach ($result3 as $row3) { ?>
+        <option value="<?php echo $row3["id_typ_promitani"] ?>"><?php echo $row3["nazev"];
 } ?></option>
 </select><br/>
 Sál:<select name="changehall">

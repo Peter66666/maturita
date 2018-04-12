@@ -22,16 +22,9 @@ class Model {
         return $promitani;
     }
 
-    public static function buySeat($ID_promitani, $ID_sedacky) {
+    public static function bookOrBuySeat($ID_promitani, $ID_sedacky, $ID_status) {
         $query = "UPDATE `sedacky_promitani` SET
-          `id_status` = '2'
-           WHERE `id_sedacky` = $ID_sedacky AND `id_promitani` = $ID_promitani;";
-        MySQLDB::queryString($query);
-    }
-
-    public static function bookSeat($ID_promitani, $ID_sedacky) {
-        $query = "UPDATE `sedacky_promitani` SET
-          `id_status` = '3'
+          `id_status` = '$ID_status'
            WHERE `id_sedacky` = $ID_sedacky AND `id_promitani` = $ID_promitani;";
         MySQLDB::queryString($query);
     }
@@ -136,8 +129,7 @@ public static function addUser($newName, $newSurname, $newMail, $newPasswd, $new
     }
 
     public static function extractScreeningType(){
-      $query = "SELECT * FROM `typy_promitani` t
-                JOIN  `program` p ON p.id_typ_promitani = t.id_typ_promitani;";
+      $query = "SELECT * FROM `typy_promitani`;";
       $result = MySQLDb::queryString($query);
       $typeInfo = array();
       while ($row = mysqli_fetch_assoc($result)){
@@ -245,8 +237,7 @@ public static function addUser($newName, $newSurname, $newMail, $newPasswd, $new
       $query2 = "SELECT MAX(id_promitani) AS id_max_promitani FROM `program`;";
       $result2 = MySQLDB::queryString($query2);
       $row2 = mysqli_fetch_assoc($result2);
-      
-
+var_dump($row_hranice);
       for ($id_sedacky = $row_hranice["dolni_hranice"]; $id_sedacky <= $row_hranice["horni_hranice"]; $id_sedacky++){
         echo "smrt!";
         $query = "
@@ -268,6 +259,4 @@ public static function addUser($newName, $newSurname, $newMail, $newPasswd, $new
         echo "Někde nastala chyba";
       }
     }
-
-
 }

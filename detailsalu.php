@@ -1,4 +1,6 @@
-<?php require_once 'autoloader.php'; ?>
+<?php require_once 'autoloader.php';
+      session_start();
+ ?>
 <?php
 $ID_sedacky = filter_input(INPUT_GET, "id_sedacky");
 $ID_promitani = filter_input(INPUT_GET, "id_promitani");
@@ -30,15 +32,20 @@ $rada = 0;
             $rada = $row["rada"];
             ?> <td style="background-color: <?php echo $color ?>;">
 
-                <?php if (isset($_SESSION["email"]) && $row["id_status"] == 1) { ?>
-                    <a href="rezervovatsedacku.php?id_promitani=<?php echo $row["id_promitani"] ?>&id_sedacky=<?php echo $row["id_sedacky"] ?>">
-                        <?php
-                        echo $row["cislo_v_rade"] . "/" . $row["rada"] . " " . $row["nazev"];
-                        ?></a></td><?php
-            } else {
-                (isset($_SESSION["email"]) && $row["id_status"] == 3);
+                <?php             
+                 if (isset($_SESSION["email"]) && ($row["id_status"] == 1)) {
+                     echo $row["cislo_v_rade"] . "/" . $row["rada"]?>
+                    <a href="rezervovatsedacku.php?id_promitani=<?php echo $row["id_promitani"] ?>&id_sedacky=<?php echo $row["id_sedacky"] ?>&id_status=3">
+                      Rezervovat
+                    </a>
+                    <a href="rezervovatsedacku.php?id_promitani=<?php echo $row["id_promitani"] ?>&id_sedacky=<?php echo $row["id_sedacky"] ?>&id_status=2">
+                      Koupit
+                    </a>
+              </td><?php
+            } elseif
+                ((isset($_SESSION["email"]) && ($row["id_status"] == 3)) || ($row["id_status"] == 2)){
                 ?>
-            <a href="koupitsedacku.php?id_promitani=<?php echo $row["id_promitani"] ?>&id_sedacky=<?php echo $row["id_sedacky"] ?>">  <?php
+            <a href="rezervovatsedacku.php?id_promitani=<?php echo $row["id_promitani"] ?>&id_sedacky=<?php echo $row["id_sedacky"] ?>&id_status=1">  <?php
                 echo $row["cislo_v_rade"] . "/" . $row["rada"] . " " . "Zrušit";
             }
             ?>
