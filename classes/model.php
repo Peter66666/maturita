@@ -68,15 +68,7 @@ public static function addUser($newName, $newSurname, $newMail, $newPasswd, $new
     }
 }
 
-public static function addSchedule($film, $screeningtype, $language, $screeningtime, $price, $advancebooking, $hall){
-  if(($language != "") && ($screeningtime != "") && ($price != "") && ($advancebooking != "") && ($hall != "")){
-    $query = "INSERT INTO `program` (`id_filmu`, `id_typ_promitani`, `jazyk`, `cas_promitani`, `cena`, `konec_predprodeje`,  `id_salu`) VALUES ('$film', '$screeningtype', '$language', '$screeningtime', '$price', '$advancebooking', '$hall');";
-    MySQLDb::queryString($query);
-    echo "Přidali jste nové promítání";
-  } else {
-    echo "Někde nastala chyba";
-  }
-}
+
 
 
     public static function logIn($email, $password) {
@@ -94,12 +86,12 @@ public static function addSchedule($film, $screeningtype, $language, $screeningt
         MySQLDB::queryString($query);
     }
 
-    public static function extractSeats() {
+    public static function extractSeats($ID_promitani) {
         $query = "SELECT * FROM `sedacky_promitani` sp
 
                           JOIN `status` s ON sp.id_status = s.id_status
                           JOIN `sedacky` sed ON sp.id_sedacky = sed.id_sedacky
-                          WHERE id_promitani = 2
+                          WHERE id_promitani = $ID_promitani
                           ORDER BY rada, cislo_v_rade";
         $result = MySQLDB::queryString($query);
         $seatInfo = array();
@@ -219,9 +211,9 @@ public static function addSchedule($film, $screeningtype, $language, $screeningt
         }
     }
 
-    public static function updateSchedule($id_promitani, $film, $screeningtype, $language, $screeningtime, $price, $advancebooking, $hall){
-        if(($language != "") && ($screeningtime != "") && ($price != "") && ($advancebooking != "") && ($hall != "")){
-        $query = "UPDATE `program` SET `id_filmu` ='$film', `id_typ_promitani` ='$screeningtype', `jazyk` = '$language', `cas_promitani` = '$screeningtime', `cena` = '$price', `konec_predprodeje` = '$advancebooking', `id_salu` = '$hall' WHERE `id_promitani` = '$id_promitani';";
+    public static function updateSchedule($id_promitani, $film, $screeningtype, $language, $screeningtime, $price, $advancebooking, $id_salu){
+        if(($language != "") && ($screeningtime != "") && ($price != "") && ($advancebooking != "") && ($id_salu != "")){
+        $query = "UPDATE `program` SET `id_filmu` ='$film', `id_typ_promitani` ='$screeningtype', `jazyk` = '$language', `cas_promitani` = '$screeningtime', `cena` = '$price', `konec_predprodeje` = '$advancebooking', `id_salu` = '$id_salu' WHERE `id_promitani` = '$id_promitani';";
         MySQLDb::queryString($query);
         var_dump($query);
         echo "Aktualizace promítání úspěšně proběhla.";
@@ -236,6 +228,42 @@ public static function addSchedule($film, $screeningtype, $language, $screeningt
         $query = "UPDATE `filmy` SET `nazev_filmu` = '$nazev_filmu' WHERE `id_filmu` = '$id_filmu';";
         MySQLDb::queryString($query);
         echo "Aktualizace filmu úspěšně proběhla.";
+      } else {
+        echo "Někde nastala chyba";
+      }
+    }
+//zjištění horní a dolní hranice id sedačky pro nové promítání
+    private static function prepareSeats($id_salu){
+    $query = "SELECT MIN(id_sedacky) AS dolni_hranice, MAX(id_sedacky) AS horni_hranice FROM `sedacky` WHERE `id_salu` = '$id_salu';";
+    $result = MySQLDB::queryString($query);
+    $row = mysqli_fetch_assoc($result);
+    return $row;
+    }
+//přidání volných sedaček k novému promítání
+    private static function addSeats($id_salu){
+      $row_hranice = Model::prepareSeats($id_salu);
+      $query2 = "SELECT MAX(id_promitani) AS id_max_promitani FROM `program`;";
+      $result2 = MySQLDB::queryString($query2);
+      $row2 = mysqli_fetch_assoc($result2);
+      
+
+      for ($id_sedacky = $row_hranice["dolni_hranice"]; $id_sedacky <= $row_hranice["horni_hranice"]; $id_sedacky++){
+        echo "smrt!";
+        $query = "
+            INSERT INTO `sedacky_promitani` (`id_sedacky`, `id_promitani`, `id_status`)
+            VALUES('". $id_sedacky ."', '".$row2["id_max_promitani"]."', '1');
+            ";
+        echo $query;
+        MySQLDB::queryString($query);
+      }
+    }
+//přidání nového promítání i s jeho volnými sedačkami v sálu
+    public static function addSchedule($film, $screeningtype, $language, $screeningtime, $price, $advancebooking, $id_salu){
+      if(($language != "") && ($screeningtime != "") && ($price != "") && ($advancebooking != "") && ($id_salu != "")){
+        $query = "INSERT INTO `program` (`id_filmu`, `id_typ_promitani`, `jazyk`, `cas_promitani`, `cena`, `konec_predprodeje`,  `id_salu`) VALUES ('$film', '$screeningtype', '$language', '$screeningtime', '$price', '$advancebooking', '$id_salu');";
+        MySQLDb::queryString($query);
+        Model::addSeats($id_salu);
+        echo "Přidali jste nové promítání";
       } else {
         echo "Někde nastala chyba";
       }

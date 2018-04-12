@@ -11,6 +11,7 @@ if (isset($submit)) {
     if (isset($result)) {
         session_start();
         $_SESSION["email"] = $email;
+        var_dump($_SESSION);
     }
 }
 

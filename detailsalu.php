@@ -3,7 +3,7 @@
 $ID_sedacky = filter_input(INPUT_GET, "id_sedacky");
 $ID_promitani = filter_input(INPUT_GET, "id_promitani");
 $result2 = Model::cancelSeat($ID_promitani, $ID_sedacky);
-$result = Model::extractSeats();
+$result = Model::extractSeats($ID_promitani);
 
 $rada = 0;
 ?>

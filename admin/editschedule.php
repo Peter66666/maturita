@@ -30,7 +30,7 @@ Sál:<select name="changehall">
 </select><br/>
 <input type="submit" name="submit" value="Odeslat"/>
 </form>
-<a href="/maturitni_prace/admin/listSchedule.php">Zpět</a>
+<a href="http://localhost/maturitni_prace/admin/listSchedule.php">Zpět</a>
 <hr>
 <?php
 $submit = filter_input(INPUT_POST, "submit");
@@ -40,13 +40,13 @@ $language = filter_input(INPUT_POST, "changelang");
 $screeningtime = filter_input(INPUT_POST, "changescreeningtime");
 $price = filter_input(INPUT_POST, "changeprice");
 $advancebooking = filter_input(INPUT_POST, "changeadvancebooking");
-$hall = filter_input(INPUT_POST, "changehall");
-var_dump($hall);
+$id_salu = filter_input(INPUT_POST, "changehall");
+
 if (isset($submit) && isset($id_promitani))
 {
-    $result = Model::updateSchedule($id_promitani, $film, $screeningtype, $language, $screeningtime, $price, $advancebooking, $hall);
+    $result = Model::updateSchedule($id_promitani, $film, $screeningtype, $language, $screeningtime, $price, $advancebooking, $id_salu);
 }elseif (isset($submit)){
 
-    $result = Model::addSchedule($film, $screeningtype, $language, $screeningtime, $price, $advancebooking, $hall);
+    $result = Model::addSchedule($film, $screeningtype, $language, $screeningtime, $price, $advancebooking, $id_salu);
 }
  require_once 'adminfooter.php';
